@@ -1,4 +1,4 @@
-ARG ALPINE_VERSION=3.19
+ARG ALPINE_VERSION=3.21
 
 FROM alpine:${ALPINE_VERSION}
 
@@ -13,14 +13,14 @@ RUN apk update; \
 
 RUN set -e -u; \
     cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime; \
-    addgroup --gid ${GROUP_ID} --system ${GROUP}; \
-    adduser --ingroup ${GROUP} --home /${USER} --shell /bin/bash --system --uid ${USER_ID} ${USER}
+    addgroup --gid ${GROUP_ID} ${GROUP}; \
+    adduser --disabled-password --ingroup ${GROUP} --home /home/${USER} --shell /bin/bash --uid ${USER_ID} ${USER}
 
 RUN set -e -u; \
-    chown --recursive ${USER}:${USER} /${USER}
+    chown --recursive ${USER}:${USER} /home/${USER}
 
 COPY docker/.bashrc /root
-COPY --chown=${USER}:${USER} docker/.bashrc /${USER}
+COPY --chown=${USER}:${USER} docker/.bashrc /home/${USER}
 COPY docker/entrypoint.sh /usr/local/bin
 
 ENTRYPOINT ["entrypoint.sh"]
