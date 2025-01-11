@@ -13,8 +13,8 @@ RUN apk update; \
 
 RUN set -e -u; \
     cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime; \
-    addgroup --gid ${GROUP_ID} --system ${GROUP}; \
-    adduser --ingroup ${GROUP} --home /${USER} --shell /bin/bash --system --uid ${USER_ID} ${USER}
+    addgroup --gid ${GROUP_ID} ${GROUP}; \
+    adduser --disabled-password --ingroup ${GROUP} --home /${USER} --shell /bin/bash --uid ${USER_ID} ${USER}
 
 RUN set -e -u; \
     chown --recursive ${USER}:${USER} /${USER}
