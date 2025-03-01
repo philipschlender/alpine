@@ -8,7 +8,8 @@ ARG TIMEZONE=Europe/Berlin
 ARG USER=user
 ARG USER_ID=1000
 
-RUN apk update; \
+RUN set -e -u -x; \
+    apk update; \
     apk add --no-cache bash bash-completion nano shadow tzdata
 
 RUN set -e -u -x; \
