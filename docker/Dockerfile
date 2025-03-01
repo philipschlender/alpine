@@ -11,12 +11,12 @@ ARG USER_ID=1000
 RUN apk update; \
     apk add --no-cache bash bash-completion nano shadow tzdata
 
-RUN set -e -u; \
+RUN set -e -u -x; \
     cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime; \
     addgroup --gid ${GROUP_ID} ${GROUP}; \
     adduser --disabled-password --ingroup ${GROUP} --home /home/${USER} --shell /bin/bash --uid ${USER_ID} ${USER}
 
-RUN set -e -u; \
+RUN set -e -u -x; \
     chown --recursive ${USER}:${USER} /home/${USER}
 
 COPY docker/.bashrc /root
