@@ -16,7 +16,8 @@ RUN set -e -u -x; \
     cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime; \
     addgroup --gid ${GROUP_ID} ${GROUP}; \
     adduser --disabled-password --ingroup ${GROUP} --home /home/${USER} --shell /bin/bash --uid ${USER_ID} ${USER}; \
-    chown --recursive ${USER}:${USER} /home/${USER}
+    chown --recursive ${USER}:${USER} /home/${USER}; \
+    chmod -R 0750 /home/${USER}
 
 COPY docker/.bashrc /root
 COPY --chown=${USER}:${USER} docker/.bashrc /home/${USER}
