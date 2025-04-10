@@ -15,9 +15,7 @@ RUN set -e -u -x; \
 RUN set -e -u -x; \
     cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime; \
     addgroup --gid ${GROUP_ID} ${GROUP}; \
-    adduser --disabled-password --ingroup ${GROUP} --home /home/${USER} --shell /bin/bash --uid ${USER_ID} ${USER}
-
-RUN set -e -u -x; \
+    adduser --disabled-password --ingroup ${GROUP} --home /home/${USER} --shell /bin/bash --uid ${USER_ID} ${USER}; \
     chown --recursive ${USER}:${USER} /home/${USER}
 
 COPY docker/.bashrc /root
