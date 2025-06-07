@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Alpine is a docker image based on [Alpine](https://www.alpinelinux.org/). It includes some handy additions like basic packages, preset time zone and user.
+Alpine is a docker image based on [Alpine](https://alpinelinux.org/). It includes some handy additions like basic packages, preset time zone and user.
 
 ## How to use
 
