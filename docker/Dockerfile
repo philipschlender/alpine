@@ -19,8 +19,8 @@ RUN set -e -u -x; \
     chown --recursive ${USER}:${USER} /home/${USER}; \
     chmod -R 0750 /home/${USER}
 
-COPY docker/.bashrc /root
-COPY --chown=${USER}:${USER} docker/.bashrc /home/${USER}
-COPY docker/entrypoint.sh /usr/local/bin
+COPY docker/.bashrc /root/
+COPY --chown=${USER}:${USER} docker/.bashrc /home/${USER}/
+COPY docker/entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
