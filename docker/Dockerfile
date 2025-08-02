@@ -13,7 +13,7 @@ RUN set -e -u -x; \
     apk add --no-cache bash bash-completion nano shadow tzdata
 
 RUN set -e -u -x; \
-    cp "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime; \
+    ln -f -s "/usr/share/zoneinfo/${TIMEZONE}" /etc/localtime; \
     addgroup --gid "${GROUP_ID}" "${GROUP}"; \
     adduser --disabled-password --ingroup "${GROUP}" --home "/home/${USER}" --shell /bin/bash --uid "${USER_ID}" "${USER}"; \
     chown --recursive "${USER}:${GROUP}" "/home/${USER}"; \
