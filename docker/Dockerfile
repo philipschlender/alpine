@@ -10,6 +10,7 @@ ARG USER_ID=1000
 
 RUN set -e -u -x; \
     apk update; \
+    apk upgrade; \
     apk add --no-cache bash bash-completion nano shadow tzdata
 
 RUN set -e -u -x; \
