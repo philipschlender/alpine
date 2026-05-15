@@ -1,15 +1,16 @@
-ARG ALPINE_VERSION=3.22
+ARG ALPINE_VERSION=3.23
 
 FROM "alpine:${ALPINE_VERSION}"
 
 ARG GROUP=user
 ARG GROUP_ID=1000
-ARG TIMEZONE=Europe/Berlin
+ARG TIMEZONE=UTC
 ARG USER=user
 ARG USER_ID=1000
 
 RUN set -e -u -x; \
     apk update; \
+    apk upgrade; \
     apk add --no-cache bash bash-completion nano shadow tzdata
 
 RUN set -e -u -x; \
