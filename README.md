@@ -15,17 +15,11 @@ docker build --file docker/Dockerfile --tag philipschlender/alpine:latest .
 ### Run
 
 ```bash
-docker run --detach --name alpine --rm philipschlender/alpine:latest
+docker run --interactive --name alpine --rm --tty philipschlender/alpine:latest
 ```
 
-### Exec
+### Push
 
 ```bash
-docker exec --interactive --tty alpine bash
-```
-
-### Stop
-
-```bash
-docker stop alpine
+docker push philipschlender/alpine:latest
 ```
